@@ -4,7 +4,7 @@ import { Request } from "express";
 
 interface Account {
     accno: number;
-    name: string;
+    names: string;
     acctype: string;
     status: string;
     accbalance: number;
@@ -16,12 +16,12 @@ export function createAccount(holder: string, type: string, balance: number): Ac
     const accnum = Math.floor(Math.random() * 10000);
     const accountnew: Account = {
         accno: accnum,
-        name: holder,
+        names: holder,
         acctype: type,
         status: "pending",
         accbalance: balance,
     };
-    const existingAccounts = acc.filter((account) => account.name === holder && account.acctype === type);
+    const existingAccounts = acc.filter((account) => account.names === holder && account.acctype === type);
     if (existingAccounts.length >= 2) {
         return "You already have two accounts of this type.";
     }
