@@ -15,8 +15,12 @@ const CityNames = () => {
 
   return (
     <>
+    <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    </head>
+    <body>
     
-     
        <h2>Metro charges</h2>
       <label htmlFor="dropdown">Select a City: </label>
       <select id="dropdown" value={selectedCity} onChange={(e) => handleSelect(e.target.value)}>
@@ -26,12 +30,14 @@ const CityNames = () => {
         <option value="Banglore">Banglore</option>
       </select>
     
-     
+      
 
      
     <Global.Provider value={selectedCity}> 
     <Locationcomp></Locationcomp> 
     </Global.Provider>
+    
+    </body>
     </>
   );
 };
