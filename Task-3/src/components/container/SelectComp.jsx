@@ -13,7 +13,8 @@ const SelectComp = (props) => {
     <>
     <body>
       
-      <select
+      <div className="s2">
+      <select 
         value={locval}
         onChange={(e) => setValues(e)}
       >
@@ -25,6 +26,7 @@ const SelectComp = (props) => {
           
         ))}
       </select>
+      </div>
       
       </body>
     </>

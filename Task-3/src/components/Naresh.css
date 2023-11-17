@@ -1,0 +1,9 @@
+.s1{
+    
+    position: relative;
+    left: 75%;
+}
+.s2,h2,p{
+    position: relative;
+    left: 50%;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Global from "./Context";
+import './Naresh.css'
 //import MetroCharges from "./MetroCharges";
 import Locationcomp from "./container/locationcomp";
 const CityNames = () => {
@@ -20,15 +21,16 @@ const CityNames = () => {
 
     </head>
     <body>
-    
-       <h2>Metro charges</h2>
+    <div className="s1">
+      <h1>Metro charges</h1>
       <label htmlFor="dropdown">Select a City: </label>
-      <select id="dropdown" value={selectedCity} onChange={(e) => handleSelect(e.target.value)}>
+      <select  value={selectedCity} onChange={(e) => handleSelect(e.target.value)}>
         <option value="">-- Select City --</option>
         <option value="Hyderabad">Hyderabad</option>
         <option value="Chennai">Chennai</option>
         <option value="Banglore">Banglore</option>
       </select>
+      </div>
     
       
 

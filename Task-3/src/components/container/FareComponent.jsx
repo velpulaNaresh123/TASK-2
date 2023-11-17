@@ -2,8 +2,10 @@ import { useContext, useState,useEffect } from "react";
 //import Global from "./Context";
 //import FromComp from "./FromComp";
 //import ToComp from "./ToComp";
+import Locationsarray from "./Locationsarray";
 const FareComponent=(props)=>{
-    const{fromloc,toloc,stations}=props;
+    const{fromloc,toloc}=props;
+    const stations=Locationsarray()
    
    // const[charge,setCharge]=useState("")
     
