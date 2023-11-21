@@ -1,11 +1,15 @@
 import { useContext, useState,useEffect } from "react";
 //import Global from "./Context";
 //import FromComp from "./FromComp";
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 //import ToComp from "./ToComp";
-import Locationsarray from "./Locationsarray";
+import Global from "../../context/Context";
+import getLocationsArray from "../../store/locationsarray";
 const FareComponent=(props)=>{
+  const cityName=useContext(Global)
     const{fromloc,toloc}=props;
-    const stations=Locationsarray()
+    const stations=getLocationsArray(cityName)
    
    // const[charge,setCharge]=useState("")
     
@@ -45,8 +49,10 @@ const FareComponent=(props)=>{
 
 return(
     <>
-      
-      <p>Total Amount:{amount}</p>
+         <Box  >
+      <Card variant="outlined" sx={{width:220, padding:3}} >Total Amount:{amount}</Card>
+    </Box>
+     
     
     </>
 );
