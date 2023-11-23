@@ -1,38 +1,34 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-//import './App.css'
-import DisplayEmpDetails from './components/DisplayEmpDetails'
-import EmployeeInpute from './components/EmployeeInputs'
-import ButtonAppBar from './components/Header'
-import {Routes,Route} from 'react-router-dom'
-
-//import EmployeeInpute, { EmpInterface } from './components/EmployeeInputs'
-//import EmployeeInpute from './components/EmployeeInputs'
-
+import axios from "axios";
+import { useState } from "react";
+import EmployeeInpute from "./components/EmployeeInputs";
+import { EmpDetailsType } from "./store/EmployeeStore";
+import DisplayEmpDetails from "./components/DisplayEmpDetails";
 function App() {
- // const [count, setCount] = useState(0)
-
-  //  const handleChange=(input:EmpInterface)=>{
-  //   const inputdata=input;
-  //  // console.log(inputdata)
-  //  }
-   
+  const [allEmployees, setAllEmployees] = useState<EmpDetailsType[]>([]);
+  console.log(allEmployees);
+  const handleAddEmpDetails = async (EmpObj: EmpDetailsType) => {
+    await axios.post("http://localhost:7000/emp/post", EmpObj);
+    getAllEmpValues();
+  };
+  const getAllEmpValues = async () => {
+    const details = await axios.get("http://localhost:7000/emp/getdata");
+    setAllEmployees(details.data);
+    console.log(details.data);
+  };
+  const deleteRec = async (element: string) => {
+    await axios.delete(`http://localhost:7000/emp/deleteonerec/${element}`);
+    getAllEmpValues();
+  };
 
   return (
     <>
-     <ButtonAppBar></ButtonAppBar>
-     
-     
-            <Routes>                        
-            <Route path='/' element={<EmployeeInpute/>} />
-            <Route path='/getallEmployees' element={<DisplayEmpDetails></DisplayEmpDetails>} />              
-            </Routes>
-     
+      <EmployeeInpute addEmpDetails={handleAddEmpDetails}></EmployeeInpute>
+      <DisplayEmpDetails
+        allEmployees={allEmployees}
+        deleteHandle={deleteRec}
+      ></DisplayEmpDetails>
     </>
-  )
+  );
 }
 
-export default App
-
- 
+export default App;

@@ -1,9 +1,8 @@
 export const EmployeeDepartment=["Developer","Testing","Deployment"]
 
-
 export interface EmpDetailsType{
+     _id?:string,
     name:string,
     dept:string,
-    salary:number
+    salary:number,
 }
-export const Emparray:{name:string,dept:string,salary:number}[]=[]
